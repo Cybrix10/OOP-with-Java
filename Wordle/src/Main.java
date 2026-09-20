@@ -3,12 +3,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Main {
-    /*
-    Bei der Main Methode wird von der programmierer einen Password festgelegt, dabei soll das programm alles in kleinbuchstaben setzen. Außerdem soll es 5 versuche
-    geben und dann soll das program die methoden hp führen, um den spieler zu zeigen, dass er nur 5 Versuche hat. Die Methode rules soll dabei betrachtet werden. Wenn
-    die eingabe das gleiche, wie password ist, soll das program schreiben, dass der spieler das Password gefunden hat. Wenn nicht, dann soll er weiter versuchen bis man
-    alle Versuche verbraucht hat, wenn dies passiert dann soll das Programm schreiben das man keine weitere versuche hat und ihn das password verraten.
-    */
     public static void main(String[] args) {
 
         List<String> passwordList = new ArrayList<String>();
@@ -70,10 +64,6 @@ public class Main {
         }
     }
 
-    /*
-    Hier werden die Regeln festgelegt wie ZB. maximal 5 Buchstaben, keine umlaute verwenden.
-    */
-
     static String rules() {
         String input = IO.readln(" " + "Please guess the password: ");
 
@@ -94,7 +84,6 @@ public class Main {
         return randomInt;
     }
 
-    // vergleichen, ob der Buchstabe im Wort vorhanden ist
     static boolean containsLetter(String word, char letter) {
         for (char c : word.toCharArray()){
             if (c == letter){
@@ -104,14 +93,14 @@ public class Main {
         return false;
     }
 
-    // Hinweise:
+
     static char getHint(String word, char letter, int index){
         return word.charAt(index) == letter ? '+' : containsLetter(word, letter) ? '#' : '-';
     }
 
-    // Hinweise zeigen:
+    
     static void feedBack(String input, String internalPass){
-        System.out.print("Hinweis: ");
+        System.out.print("Hint: ");
         for (int i = 0; i < Math.min(internalPass.length(), input.length()); i++) {
             char guessChar = input.toLowerCase().charAt(i);
             System.out.print(getHint(internalPass, guessChar, i));
